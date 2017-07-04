@@ -1,0 +1,55 @@
+// TODO - listItem common component
+
+.itemList {
+	list-style-type: none;
+	margin: 0;
+	width: 100%;
+}
+.itemList--tabular { display: table; }
+
+.itemList__row {
+	margin: 0 0 8px 0;
+	border: 1px solid #ddd;
+	overflow: hidden;
+
+}
+.itemList__row--header {
+	border: 0;
+	font-weight: bold;
+}
+.itemList__row--summary { font-weight: bold; }
+
+.itemList__cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+.itemList__cell--primary-column {
+	width: 700px;
+}
+.itemList__cell--column {
+	width: 100px;
+}
+.itemList__cell--summary-column {
+	width: 130px;
+	float: right;
+
+}
+
+.itemList__image {
+	float: left;
+}
+.itemList__detail {
+	height: 100px;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 15px;
+}
+
+.form-action {
+	margin: 40px 0 0 0;
+	text-align: right;
+}
+
+.number-input {
+	width: 50px;
+}

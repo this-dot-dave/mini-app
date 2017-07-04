@@ -1,0 +1,53 @@
+<div class="content">
+	<h1>Shopping Cart</h1>
+	
+	<p ng-if="$ctrl.cartData.length == 0">
+		You're cart is empty! <br/>
+		<a class="pure-button button-secondary" ui-sref="products" role="button">Continue Shopping</a>
+	</p>
+
+	<ul ng-if="$ctrl.cartData.length > 0" class="itemList itemList--tabular">
+		<li class="itemList__row itemList__row--header">
+			<div class="itemList__cell itemList__cell--primary-column">
+				
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				Quantity
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				Total
+			</div>
+		</li>
+
+		<li ng-repeat="item in $ctrl.cartData" class="itemList__row">
+			<div class="itemList__cell itemList__cell--primary-column">
+				<div class="itemList__image">
+					<img class="pure-img" 
+						ng-src="./app/assets/{{ item.photo }}" 
+						onerror="this.src='./app/assets/sorry-image-not-available.jpg'" 
+						alt=""
+						width="175px" height="175px" />
+				</div>
+				<div class="itemList__detail">
+					<h2>{{ item.name }}</h2>
+				</div>
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				{{ item.quantity }}
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				{{ $ctrl.getItemTotal(item.sku) | currency }}
+			</div>
+		</li>
+
+		<li class="itemList__row--summary">
+			<div class="itemList__cell itemList__cell--summary-column">
+				Total: {{ $ctrl.totalPrice | currency }} 
+			</div>
+		</li>
+	</ul>
+	<div ng-if="$ctrl.cartData.length > 0" class="form-action">
+		<a class="pure-button button-secondary" ui-sref="products" role="button">Continue Shopping</a>
+		<a class="pure-button pure-button-primary" ui-sref="checkout" ng-click="$ctrl.checkout()" role="button">Check Out</a>
+	</div>
+</div>

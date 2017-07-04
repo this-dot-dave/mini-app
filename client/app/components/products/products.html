@@ -1,0 +1,32 @@
+<div class="content">
+	<h1>Product List</h1>
+	<ul class="itemList itemList--tabular">
+		<li ng-repeat="product in $ctrl.storeData.product_list" class="itemList__row">
+			<div class="itemList__cell itemList__cell--primary-column">
+				<div class="itemList__image">
+					<img class="pure-img"
+						ng-src="./app/assets/{{ product.photo }}"
+						onerror="this.src='./app/assets/sorry-image-not-available.jpg'"
+						alt="" 
+						width="175px" height="175px" />
+				</div>
+				<div class="itemList__detail">
+					<h2>{{ product.item_name }}</h2>
+					<p>
+						{{ product.item_description }}
+					</p>
+				</div>
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				{{ product.unit_price | currency }}
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				<input type="number" ng-value="$ctrl.defaultQuantity" ng-model="product.quantity" min="0" max="{{ product.qty_available }}" class="number-input" />
+			</div>
+			<div class="itemList__cell itemList__cell--column">
+				<a class="pure-button pure-button-primary" ui-sref="cart" ng-click="$ctrl.buyItem($index, product.photo, product.item_name, product.unit_price, product.quantity)" role="button">Buy</a>
+			</div>
+		</li>
+		
+	</ul>
+</div>
